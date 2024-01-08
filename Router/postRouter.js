@@ -3,7 +3,7 @@ const PostController = require('../Controller/postController');
 const uploadMiddleware = require('../Middlewares/uplaodMiddleware');
 
 router.post('/upload', uploadMiddleware.array('images',3), (req,res)=>{
-    const imageUrls = req.files.map(file => `/uploads/${file.filename}`);
+    const imageUrls = req.files.map(file => `/uploads/post/${file.filename}`);
     res.json({imageUrls});
 })
 router.post('/createPost', PostController.createPost);
