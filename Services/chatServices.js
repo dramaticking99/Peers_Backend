@@ -1,5 +1,7 @@
+const { createDiffieHellmanGroup } = require('crypto');
 const messageModel = require('../Models/Chat/messageModel');
 const { ObjectId } = require('mongoose').Types;
+const fs = require('fs')
 
 class MessageServices{
     static async addMessage(sender_Id,reciever_Id,content,timeStamp){
@@ -30,6 +32,18 @@ class MessageServices{
         } catch (error) {
             console.error("Error getting the chat history of the users", error);
             throw error;
+        }
+    }
+
+    static async getChats(sender_Id) {
+        try {
+            //Getting the chats from a dummyData Dir. Implement properly in future
+            let filePath = "/Users/chetansanwariya/Desktop/Peers_Backend.project/DummyData/Chat/ChatsList.json";
+            let jsonData = fs.readFileSync(filePath, 'utf-8');
+            return JSON.stringify(JSON.parse(jsonData),null,2)
+        } catch (error) {
+            console.error('Error reading the ChatsList.json from DummyData/Chat:', error);
+            return null;
         }
     }
 }

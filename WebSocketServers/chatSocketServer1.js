@@ -54,7 +54,7 @@ function setupWebbSocketServer(server) {
                 const jsonString = `{
                     "content" : "${content}",
                     "sender_Id" : "${sender_Id}",
-                    "receiver_Id" : "${receiver_Id}"
+                    "reciever_Id" : "${receiver_Id}"
                 }`
                 
                 console.log(jsonString);

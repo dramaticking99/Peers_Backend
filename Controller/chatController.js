@@ -24,3 +24,14 @@ exports.getChat = async(req,res,next)=>{
         throw(error)
     }
 }
+exports.getChats = async(req,res,next)=>{
+    try {
+        const{sender_Id} = req.body
+
+        const chats = await ChatServices.getChats(sender_Id);
+
+        res.json({ chats });
+    } catch(error) {
+        throw(error)
+    }
+}
